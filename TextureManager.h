@@ -18,7 +18,7 @@ public:
    // Destructor which deletes the textures previously loaded
    ~TextureManager();
     
-   int getLength();
+   static int getLength();
 
    // Get texutre by name specified in loadTexture, or return null
    static sf::Texture *getTexture(string name);
