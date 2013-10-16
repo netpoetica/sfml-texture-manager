@@ -11,6 +11,9 @@ class TextureManager
 {
    // The textures that are loaded
    static map<string, sf::Texture*> textures;
+    
+   // Manually keep track of the order in which textures were loaded, so you can get by index.
+   static std::vector<string> order;
 
    // Constructor that is not used
    TextureManager();
@@ -22,6 +25,9 @@ public:
 
    // Get texutre by name specified in loadTexture, or return null
    static sf::Texture *getTexture(string name);
+    
+   // Get texutre by index in map, or return null
+   static sf::Texture *getTexture(int index);
     
    // Loads the texture and returns a pointer to it
    // If it is already loaded, this function just returns it

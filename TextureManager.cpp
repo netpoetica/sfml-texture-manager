@@ -5,6 +5,7 @@ TextureManager::TextureManager()
 }
 
 map<string, sf::Texture*> TextureManager::textures;
+std::vector<string> TextureManager::order;
 
 // Get Length of Textures Array
 int TextureManager::getLength(){
@@ -23,6 +24,13 @@ sf::Texture *TextureManager::getTexture(string name)
     }
 }
 
+// Get Texture by Index
+sf::Texture *TextureManager::getTexture(int index)
+{
+    // Stay DRY and reuse get by name, but get string name from vector with index
+    return getTexture(order.at(index));
+}
+
 // Assign a Texture a Name (for accessing via get) and path (to load from)
 sf::Texture *TextureManager::loadTexture(string name, string path)
 {
@@ -32,6 +40,9 @@ sf::Texture *TextureManager::loadTexture(string name, string path)
     if(texture->loadFromFile(path))
     {
         textures[name] = texture;
+        
+        // Push to vector the order in which items were loaded into map, for accessing via index.
+        order.push_back(name);
         return textures[name];
     }
     else
