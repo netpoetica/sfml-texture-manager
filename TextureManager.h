@@ -18,10 +18,12 @@ public:
    // Destructor which deletes the textures previously loaded
    ~TextureManager();
 
+   // Get texutre by name specified in loadTexture, or return null
+   static sf::Texture *getTexture(string name);
+    
    // Loads the texture and returns a pointer to it
    // If it is already loaded, this function just returns it
    // If it cannot find the file, returns NULL
-   static sf::Texture *getTexture(string name);
    static sf::Texture *loadTexture(string name, string path);
 };
 
