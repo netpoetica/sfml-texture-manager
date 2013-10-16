@@ -6,6 +6,11 @@ TextureManager::TextureManager()
 
 map<string, sf::Texture*> TextureManager::textures;
 
+// Get Length of Textures Array
+int TextureManager::getLength(){
+    return textures.size();
+}
+
 // Get Texture by Name
 sf::Texture *TextureManager::getTexture(string name)
 {
